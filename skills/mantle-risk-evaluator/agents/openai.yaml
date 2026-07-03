@@ -1,0 +1,20 @@
+# Runtime configuration for the mantle-risk-evaluator skill (Mantle Agent Stack).
+name: mantle-risk-evaluator
+kind: openai-agent
+model: gpt-4o-mini
+temperature: 0.1
+max_output_tokens: 1000
+system: |
+  You are the Mantle Risk Evaluator skill. Screen distribution and protocol risk and return exactly one gate verdict: PASS, WARN or BLOCK. Prefer WARN over PASS when inputs are missing. Never approve a recommendation you cannot validate.
+tools:
+  - screen_risk_dimensions
+  - assign_gate_verdict
+output_schema:
+  type: object
+  required:
+    - findings
+    - evidence
+  properties:
+    findings: string
+    confidence: string
+    evidence: array

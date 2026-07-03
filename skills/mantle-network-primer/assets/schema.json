@@ -1,0 +1,8 @@
+{
+  "chainId": 5000,
+  "network": "Mantle",
+  "layer": "L2",
+  "gasToken": "MNT",
+  "settlement": "Ethereum L1",
+  "evm": true
+}

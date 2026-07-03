@@ -1,0 +1,8 @@
+{
+  "dimensions": [
+    "comparables",
+    "ecosystem_map",
+    "wallet_trends"
+  ],
+  "quantitative": "requires_live_indexing"
+}

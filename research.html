@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Start Research — Mantle Seeker</title>
+<meta name="description" content="Brief Mantle Seeker about your tokenized asset and let the AI research agent investigate its distribution strategy.">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="research.html">
+<main class="wrap section">
+  <div class="center" style="max-width:720px">
+    <span class="eyebrow" style="justify-content:center">Research intake</span>
+    <h1 class="title">Brief your research agent</h1>
+    <p class="lead center">Answer a few questions and Mantle Seeker will investigate before it recommends. The more context you provide, the higher the confidence of the investigation.</p>
+  </div>
+
+  <!-- AI Interview (default) -->
+  <section class="interview" id="interview">
+    <div class="iv-head">
+      <span class="iv-title"><span class="pulse" style="width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block"></span> AI Interview</span>
+      <div class="iv-progress"><i></i></div>
+      <span class="iv-count mono">0 / 7</span>
+    </div>
+    <div class="iv-log"></div>
+    <div class="iv-input"></div>
+  </section>
+
+  <div class="iv-toggle-row">
+    <button id="iv-toggle" type="button">Prefer a classic form?</button>
+  </div>
+
+  <!-- Classic form (toggle) -->
+  <div id="classic-wrap">
+    <form id="research-form" class="panel mt40" style="max-width:900px;margin-left:auto;margin-right:auto" novalidate>
+      <div class="form-grid">
+        <div class="field">
+          <label>Asset name <span class="req">*</span></label>
+          <input name="assetName" placeholder="e.g. Helios Solar Yield Note" required>
+        </div>
+        <div class="field">
+          <label>Asset type <span class="req">*</span></label>
+          <select name="assetType" required>
+            <option value="" disabled selected>Select type…</option>
+            <option>Real Estate</option>
+            <option>Treasury</option>
+            <option>Bond</option>
+            <option>Private Credit</option>
+            <option>Commodities</option>
+            <option>Equity</option>
+            <option>Fund</option>
+            <option>Stablecoin</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Asset value / raise size</label>
+          <input name="assetValue" placeholder="e.g. $25,000,000">
+        </div>
+        <div class="field">
+          <label>Target investors</label>
+          <select name="targetInvestors">
+            <option value="" disabled selected>Select…</option>
+            <option>Retail</option>
+            <option>Institution</option>
+            <option>Mixed</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Target region</label>
+          <select name="targetRegion">
+            <option value="" disabled selected>Select region…</option>
+            <option>Global</option>
+            <option>North America</option>
+            <option>Europe</option>
+            <option>Asia</option>
+            <option>Africa</option>
+            <option>Latin America</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Launch stage</label>
+          <select name="launchStage">
+            <option value="" disabled selected>Select stage…</option>
+            <option>Planning</option>
+            <option>Pre-Issuance</option>
+            <option>Issued</option>
+            <option>Live</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label>Distribution goal</label>
+          <textarea name="distributionGoal" placeholder="What does successful distribution look like? e.g. broaden holder base, deepen secondary liquidity, reach non-US capital…"></textarea>
+        </div>
+        <div class="field full">
+          <label>Additional notes</label>
+          <textarea name="notes" placeholder="Constraints, compliance needs, existing partners, anything else the analyst should know…"></textarea>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-primary" type="submit">Start AI Research <span class="btn-arrow">&rarr;</span></button>
+        <span class="hint">Mantle Seeker will investigate before recommending. Typical run: under 10s.</span>
+      </div>
+    </form>
+  </div>
+</main>
+<script src="assets/app.js"></script>
+</body>
+</html>

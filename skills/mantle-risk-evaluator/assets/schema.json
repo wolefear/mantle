@@ -1,0 +1,14 @@
+{
+  "verdicts": [
+    "PASS",
+    "WARN",
+    "BLOCK"
+  ],
+  "dimensions": [
+    "liquidity",
+    "market",
+    "adoption",
+    "infrastructure",
+    "operational"
+  ]
+}

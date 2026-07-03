@@ -1,0 +1,8 @@
+{
+  "venue_types": [
+    "concentrated_amm",
+    "structured_access",
+    "lending_market"
+  ],
+  "quantitative": "requires_live_measurement"
+}

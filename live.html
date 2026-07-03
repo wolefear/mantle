@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Investigating… — Mantle Seeker</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="live.html">
+<main class="wrap section">
+  <div class="live-head">
+    <div>
+      <span class="eyebrow">Live investigation</span>
+      <h1 class="title" style="margin-bottom:4px">Researching <span id="live-asset" style="color:var(--green)">asset</span></h1>
+      <p class="text-muted">Mantle Seeker is gathering evidence before it recommends. Watch it work.</p>
+    </div>
+    <span class="chip"><span class="pulse" style="width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block"></span> Investigation in progress</span>
+  </div>
+
+  <div class="live-progress">
+    <div class="lp-top"><span id="live-phase">Initializing Mantle Seeker…</span><span id="live-progress-pct" class="mono">0%</span></div>
+    <div class="lp-track"><i id="live-progress-bar"></i></div>
+  </div>
+
+  <div class="split live-split" style="grid-template-columns:1.2fr .85fr;align-items:start;gap:26px">
+    <div class="steps" id="steps"></div>
+    <aside class="ai-status">
+      <div class="as-head"><span class="pulse"></span> AI Status · Live</div>
+      <div class="as-row"><div class="as-k">Research Objective</div><div class="as-v" id="as-objective">&mdash;</div></div>
+      <div class="as-row"><div class="as-k">Current Focus</div><div class="as-v" id="as-focus">&mdash;</div></div>
+      <div class="as-row"><div class="as-k">Evidence Found</div><div class="as-v" id="as-evidence">0 sources</div></div>
+      <div class="as-row"><div class="as-k">Confidence</div><div class="as-v" id="as-confidence">8%</div><div class="as-conf-wrap"><i id="as-conf-bar"></i></div></div>
+    </aside>
+  </div>
+
+  <div class="term" style="margin-top:26px">
+    <div class="term-bar"><span class="d r"></span><span class="d y"></span><span class="d g"></span><span>mantle-seeker — evidence log</span></div>
+    <div class="term-body" id="term-body"></div>
+  </div>
+
+  <div id="live-cta" class="hero-cta" style="display:none;margin-top:34px;justify-content:center">
+    <a class="btn btn-primary" href="report.html">View Dossier · Readiness <span id="done-score" style="margin-left:4px"></span> <span class="btn-arrow">&rarr;</span></a>
+  </div>
+</main>
+<script src="assets/agent.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

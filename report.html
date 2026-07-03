@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Distribution Intelligence Dossier — Mantle Seeker</title>
+<meta name="description" content="An institutional distribution intelligence dossier produced by the Mantle Seeker AI research agent.">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/dossier.css">
+</head>
+<body data-page="report.html">
+
+<!-- print-only institutional cover page -->
+<div class="print-cover" aria-hidden="true">
+  <div class="pc-top"><span class="pc-brand">MANTLE SEEKER</span><span class="pc-conf">CONFIDENTIAL</span></div>
+  <div class="pc-mid">
+    <h1>Distribution Intelligence Dossier</h1>
+    <p class="pc-asset" id="pc-asset">Tokenized Asset</p>
+    <p class="pc-meta" id="pc-meta">Research Session</p>
+  </div>
+  <div class="pc-foot"><span>Prepared by the Mantle Seeker AI Research Agent</span><span>Research Before Distribution.</span></div>
+</div>
+
+<main class="wrap report">
+
+  <!-- ===== page header ===== -->
+  <header class="dossier-head" data-reveal>
+    <div class="dh-row">
+      <div class="dh-brand"><span class="dh-logo">◉</span> MANTLE SEEKER</div>
+      <div class="dh-right"><span class="dh-conf">CONFIDENTIAL</span><span class="dh-title">Distribution Intelligence Dossier</span></div>
+    </div>
+    <div class="dh-meta" id="r-session"></div>
+  </header>
+
+  <!-- ===== export toolbar ===== -->
+  <div class="export-bar" id="export-bar" data-reveal>
+    <button class="xbtn" id="ex-pdf"><span>↓</span> Export PDF</button>
+    <button class="xbtn" id="ex-json"><span>{ }</span> Download JSON</button>
+    <button class="xbtn" id="ex-print"><span>⏏</span> Print report</button>
+    <button class="xbtn" id="ex-share"><span>↬</span> Share link</button>
+    <button class="xbtn" id="ex-copy"><span>⧉</span> Copy summary</button>
+    <button class="xbtn xbtn-accent" id="ex-replay"><span>▶</span> Replay research</button>
+    <a class="xbtn" href="research.html"><span>↻</span> New research</a>
+  </div>
+
+  <!-- ===== hero card ===== -->
+  <section class="hero-dossier" data-reveal>
+    <div class="hd-gauge">
+      <div class="gauge">
+        <svg width="196" height="196" viewBox="0 0 120 120">
+          <defs><linearGradient id="gaugeGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#57F287"/><stop offset="1" stop-color="#5FE9FF"/></linearGradient></defs>
+          <circle cx="60" cy="60" r="52" fill="none" stroke="#173232" stroke-width="11"/>
+          <circle id="ring-fg" cx="60" cy="60" r="52" fill="none" stroke="url(#gaugeGrad)" stroke-width="11" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+        </svg>
+        <div class="gauge-val"><b id="ring-val" data-count="0">0</b><span>READINESS</span><i id="ring-label" class="gauge-tag">—</i></div>
+      </div>
+    </div>
+    <div class="hd-body">
+      <span class="eyebrow">Distribution Readiness</span>
+      <h1 id="r-title">Tokenized Asset</h1>
+      <p class="text-muted" id="hero-note">Research indicates the readiness of this asset for distribution on Mantle.</p>
+      <div class="hd-chips">
+        <span class="hchip" id="chip-verdict">Verdict</span>
+        <span class="hchip" id="chip-conf">Confidence</span>
+        <span class="hchip" id="chip-gate">Risk gate</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="dossier" id="dossier">
+    <!-- ===== table of contents ===== -->
+    <aside class="toc">
+      <h5>Contents</h5>
+      <a href="#s-summary">01 · Executive Summary</a>
+      <a href="#s-asset">02 · Asset Profile</a>
+      <a href="#s-objective">03 · Research Objective</a>
+      <a href="#s-flow">04 · Research Flow</a>
+      <a href="#s-evidence">05 · Evidence Dashboard</a>
+      <a href="#s-activity">06 · Agent Activity Log</a>
+      <a href="#s-readiness">07 · Readiness Analysis</a>
+      <a href="#s-liquidity">08 · Liquidity Assessment</a>
+      <a href="#s-opportunities">09 · Opportunities</a>
+      <a href="#s-bottlenecks">10 · Bottlenecks</a>
+      <a href="#s-risks">11 · Risk Analysis</a>
+      <a href="#s-crosschain">12 · Cross-chain Strategy</a>
+      <a href="#s-reasoning">13 · AI Reasoning</a>
+      <a href="#s-gaps">14 · Research Gaps</a>
+      <a href="#s-actions">15 · Action Plan</a>
+      <a href="#s-confidence">16 · Confidence Analysis</a>
+      <a href="#s-skills">17 · Skills Console</a>
+      <a href="#s-verdict">18 · Research Verdict</a>
+      <a href="#s-seeker">19 · What Seeker Would Do</a>
+    </aside>
+
+    <div class="dossier-main">
+
+      <!-- 01 executive summary -->
+      <section class="doc-block" id="s-summary" data-reveal>
+        <h3><span class="section-num">01</span> Executive Summary</h3>
+        <div class="panel exec-card">
+          <div id="exec-summary" class="exec-text"></div>
+          <p class="mono ev-legend">Evidence is labeled <span class="badge-src ev">skill</span> (from Mantle Skills) · interpretation is labeled <span class="badge-src ai">AI reasoning</span>.</p>
+        </div>
+      </section>
+
+      <!-- 02 asset profile -->
+      <section class="doc-block" id="s-asset" data-reveal>
+        <h3><span class="section-num">02</span> Asset Profile</h3>
+        <div id="asset-profile" class="profile-grid"></div>
+      </section>
+
+      <!-- 03 research objective -->
+      <section class="doc-block" id="s-objective" data-reveal>
+        <h3><span class="section-num">03</span> Research Objective</h3>
+        <div class="panel obj-primary">
+          <span class="obj-label">Primary Question</span>
+          <p id="obj-question"></p>
+        </div>
+        <div class="two-col" style="margin-top:16px">
+          <div class="mini-card"><h5>Research Scope</h5><ul class="clean" id="obj-scope"></ul></div>
+          <div class="mini-card"><h5>Research Constraints</h5><ul class="clean" id="obj-constraints"></ul></div>
+        </div>
+      </section>
+
+      <!-- 04 research flow -->
+      <section class="doc-block" id="s-flow" data-reveal>
+        <h3><span class="section-num">04</span> Research Flow</h3>
+        <p class="text-muted" style="margin-bottom:16px">The fixed sequence Mantle Seeker follows on every investigation — research first, answer second.</p>
+        <div class="flow" id="flow">
+          <div class="flow-node" data-reveal><span class="fn-i">01</span>User Request</div>
+          <div class="flow-arrow" data-reveal>→</div>
+          <div class="flow-node" data-reveal><span class="fn-i">02</span>Research Planning</div>
+          <div class="flow-arrow" data-reveal>→</div>
+          <div class="flow-node" data-reveal><span class="fn-i">03</span>Mantle Skills</div>
+          <div class="flow-arrow" data-reveal>→</div>
+          <div class="flow-node" data-reveal><span class="fn-i">04</span>Evidence Collection</div>
+          <div class="flow-arrow" data-reveal>→</div>
+          <div class="flow-node" data-reveal><span class="fn-i">05</span>Reasoning</div>
+          <div class="flow-arrow" data-reveal>→</div>
+          <div class="flow-node" data-reveal><span class="fn-i">06</span>Confidence</div>
+          <div class="flow-arrow" data-reveal>→</div>
+          <div class="flow-node accent" data-reveal><span class="fn-i">07</span>Recommendations</div>
+        </div>
+      </section>
+
+      <!-- 05 evidence dashboard -->
+      <section class="doc-block" id="s-evidence" data-reveal>
+        <h3><span class="section-num">05</span> Evidence Dashboard</h3>
+        <p class="text-muted" style="margin-bottom:6px">Every evidence item gathered by the Mantle Skills — each with its source, finding, importance, confidence and timestamp.</p>
+        <div id="evidence-dash" class="ev-dash"></div>
+      </section>
+
+      <!-- 06 activity log -->
+      <section class="doc-block" id="s-activity" data-reveal>
+        <h3><span class="section-num">06</span> Agent Activity Log</h3>
+        <p class="text-muted" style="margin-bottom:14px">The timeline Mantle Seeker followed — each Mantle Skill it read, loaded and executed.</p>
+        <div id="activity-log"></div>
+      </section>
+
+      <!-- 07 readiness analysis -->
+      <section class="doc-block" id="s-readiness" data-reveal>
+        <h3><span class="section-num">07</span> Distribution Readiness Analysis</h3>
+        <div id="readiness-note" class="readiness-note"></div>
+        <div id="readiness-bars" class="bars" style="margin-top:18px"></div>
+      </section>
+
+      <!-- 08 liquidity assessment -->
+      <section class="doc-block" id="s-liquidity" data-reveal>
+        <h3><span class="section-num">08</span> Liquidity Assessment</h3>
+        <div class="quad">
+          <div class="mini-card good"><h5>Strengths</h5><ul class="clean" id="liq-strengths"></ul></div>
+          <div class="mini-card bad"><h5>Weaknesses</h5><ul class="clean" id="liq-weak"></ul></div>
+          <div class="mini-card"><h5>Potential Improvements</h5><ul class="clean" id="liq-improve"></ul></div>
+          <div class="mini-card accent"><h5>Priority</h5><ol class="clean num" id="liq-priority"></ol></div>
+        </div>
+      </section>
+
+      <!-- 09 opportunities -->
+      <section class="doc-block" id="s-opportunities" data-reveal>
+        <h3><span class="section-num">09</span> Distribution Opportunities</h3>
+        <div id="opps" class="opp-grid"></div>
+      </section>
+
+      <!-- 10 bottlenecks -->
+      <section class="doc-block" id="s-bottlenecks" data-reveal>
+        <h3><span class="section-num">10</span> Distribution Bottlenecks</h3>
+        <p class="text-muted" style="margin-bottom:14px">Adoption blockers Mantle Seeker flagged — what stands between this asset and efficient distribution.</p>
+        <div id="bottlenecks" class="bn-grid"></div>
+      </section>
+
+      <!-- 11 risk analysis -->
+      <section class="doc-block" id="s-risks" data-reveal>
+        <h3><span class="section-num">11</span> Risk Analysis</h3>
+        <p class="text-muted" style="margin-bottom:14px">Screened by <span class="mono" style="color:var(--cyan)">mantle-risk-evaluator</span> across five dimensions. Each risk carries a severity, description, mitigation and assessment confidence.</p>
+        <div id="risks" class="risk-grid"></div>
+      </section>
+
+      <!-- 12 cross-chain strategy -->
+      <section class="doc-block" id="s-crosschain" data-reveal>
+        <h3><span class="section-num">12</span> Cross-chain Strategy</h3>
+        <div id="cc-note"></div>
+        <div id="roadmap" class="roadmap" style="margin-top:18px"></div>
+      </section>
+
+      <!-- 13 ai reasoning -->
+      <section class="doc-block" id="s-reasoning" data-reveal>
+        <h3><span class="section-num">13</span> AI Reasoning <span class="badge-src ai">AI reasoning</span></h3>
+        <p class="text-muted" style="margin-bottom:16px">The explainability chain — how evidence became conclusions and then recommendations.</p>
+        <div class="reason-flow" id="reason-flow">
+          <div class="rf-stage" data-reveal><span>Evidence</span></div>
+          <div class="rf-arrow" data-reveal>↓</div>
+          <div class="rf-stage" data-reveal><span>Reasoning</span></div>
+          <div class="rf-arrow" data-reveal>↓</div>
+          <div class="rf-stage" data-reveal><span>Conclusion</span></div>
+          <div class="rf-arrow" data-reveal>↓</div>
+          <div class="rf-stage accent" data-reveal><span>Recommendation</span></div>
+        </div>
+        <div id="reasoning" style="margin-top:20px"></div>
+      </section>
+
+      <!-- 14 research gaps -->
+      <section class="doc-block" id="s-gaps" data-reveal>
+        <h3><span class="section-num">14</span> Research Gaps</h3>
+        <p class="text-muted" style="margin-bottom:14px">Unanswered questions. Mantle Seeker states uncertainty rather than hiding it.</p>
+        <div id="gaps" class="gap-grid"></div>
+      </section>
+
+      <!-- 15 action plan -->
+      <section class="doc-block" id="s-actions" data-reveal>
+        <h3><span class="section-num">15</span> Recommended Action Plan</h3>
+        <div id="action-plan" class="plan-grid"></div>
+      </section>
+
+      <!-- 16 confidence analysis -->
+      <section class="doc-block" id="s-confidence" data-reveal>
+        <h3><span class="section-num">16</span> Confidence Analysis</h3>
+        <div class="conf-wrap panel">
+          <div class="conf-gauge">
+            <div class="gauge sm">
+              <svg width="150" height="150" viewBox="0 0 120 120">
+                <circle cx="60" cy="60" r="52" fill="none" stroke="#173232" stroke-width="11"/>
+                <circle id="conf-ring" cx="60" cy="60" r="52" fill="none" stroke="#70F7D0" stroke-width="11" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+              </svg>
+              <div class="gauge-val"><b id="conf-val" data-count="0">0</b><span>CONFIDENCE</span><i id="conf-label" class="gauge-tag">—</i></div>
+            </div>
+          </div>
+          <div class="conf-body">
+            <div id="conf-factors" class="bars"></div>
+            <p class="text-muted mt16" id="confidence-note"></p>
+          </div>
+        </div>
+        <div class="disclaimer mt16">Scores are transparent model estimates derived from your inputs, not market guarantees. Evidence shown is illustrative of what live Mantle Skills return. Mantle Seeker states uncertainty rather than fabricating statistics.</div>
+      </section>
+
+      <!-- 17 skills console -->
+      <section class="doc-block" id="s-skills" data-reveal>
+        <h3><span class="section-num">★</span> Skills Console</h3>
+        <p class="text-muted" style="margin-bottom:14px">Every skill in the Mantle Agent Stack the agent considered. Executed skills show what they found and how it shaped the recommendation; skills not needed explain why. Click any card to expand.</p>
+        <div id="skills-console"></div>
+      </section>
+
+      <!-- 18 research verdict -->
+      <section class="doc-block" id="s-verdict" data-reveal>
+        <h3><span class="section-num">18</span> Research Verdict</h3>
+        <div class="verdict-banner" id="verdict-banner" data-level="">
+          <div class="vb-dot"></div>
+          <div class="vb-body">
+            <span class="vb-eyebrow">Final Verdict</span>
+            <h2 id="verdict-label">—</h2>
+            <p id="verdict-text" class="text-muted"></p>
+            <div class="vb-cols">
+              <div><h6>Summary</h6><p id="verdict-summary" class="text-muted"></p></div>
+              <div><h6>Reasoning</h6><p id="verdict-reasoning" class="text-muted"></p></div>
+              <div><h6>Next Step</h6><p id="verdict-nextstep" class="text-muted"></p></div>
+            </div>
+            <div class="vb-meta"><span class="vb-gate" id="verdict-gate"></span><span class="vb-conf" id="verdict-conf"></span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 19 what seeker would do -->
+      <section class="doc-block" id="s-seeker" data-reveal>
+        <h3><span class="section-num">19</span> What Seeker Would Do</h3>
+        <div class="seeker-card">
+          <div class="seeker-av">◉</div>
+          <div class="seeker-body">
+            <span class="eyebrow">Analyst’s closing view · first person</span>
+            <blockquote id="seeker-says"></blockquote>
+          </div>
+        </div>
+        <div class="report-end">
+          <div class="hero-cta"><button class="btn btn-primary" id="end-pdf">Export PDF</button><a class="btn btn-ghost" href="research.html">Run another investigation</a></div>
+          <p class="mono end-tag">END OF DOSSIER · Mantle Seeker · Research Before Distribution.</p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+<div class="print-foot" aria-hidden="true">Mantle Seeker · Distribution Intelligence Dossier · Confidential</div>
+
+<script src="assets/agent.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

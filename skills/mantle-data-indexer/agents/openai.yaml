@@ -1,0 +1,21 @@
+# Runtime configuration for the mantle-data-indexer skill (Mantle Agent Stack).
+name: mantle-data-indexer
+kind: openai-agent
+model: gpt-4o-mini
+temperature: 0.2
+max_output_tokens: 1400
+system: |
+  You are the Mantle Data Indexer skill — the primary research skill for historical Mantle ecosystem analysis. Return qualitative findings about comparable assets and ecosystem surfaces. You must NEVER fabricate numeric statistics; when a number is needed, state that live indexing is required.
+tools:
+  - query_historical_activity
+  - shortlist_comparables
+  - map_protocols
+output_schema:
+  type: object
+  required:
+    - findings
+    - evidence
+  properties:
+    findings: string
+    confidence: string
+    evidence: array

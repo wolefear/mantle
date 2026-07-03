@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Documentation — Mantle Seeker</title>
+<meta name="description" content="How Mantle Seeker works: architecture, orchestration, Mantle Skills, endpoints, data model and trust principles.">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="documentation.html">
+<main class="wrap section">
+  <div class="center" style="max-width:760px">
+    <span class="eyebrow" style="justify-content:center">Documentation</span>
+    <h1 class="title">How Mantle Seeker works</h1>
+    <p class="lead center">A production-oriented reference for the research agent: its architecture, the orchestration loop, the Mantle Skills it invokes, the API surface, and the trust principles that govern every conclusion.</p>
+  </div>
+
+  <div class="doc-layout mt40">
+    <aside class="doc-side">
+      <h5>Overview</h5>
+      <a href="#overview">What it is</a>
+      <a href="#principles">Trust principles</a>
+      <h5>Engineering</h5>
+      <a href="#architecture">Architecture</a>
+      <a href="#orchestration">Orchestration loop</a>
+      <a href="#skills">Mantle Skills</a>
+      <a href="#endpoints">API endpoints</a>
+      <a href="#data">Data model</a>
+      <h5>Operate</h5>
+      <a href="#run">Run &amp; deploy</a>
+    </aside>
+
+    <div class="doc-main">
+      <section class="doc-sec" id="overview">
+        <h2>What it is</h2>
+        <p>Mantle Seeker is an AI <strong>research agent</strong> for tokenized asset distribution. Issuance is largely solved; the hard problem is distribution &mdash; reaching the right holders, in the right regions, through the right venues. Seeker investigates that problem before it recommends anything.</p>
+        <p>It is built as a static frontend (HTML5 / CSS3 / vanilla JavaScript) with a set of Netlify Functions that host the research orchestrator. The same agent brain also runs entirely client-side as a fallback, so the product works even on a purely static host.</p>
+      </section>
+
+      <section class="doc-sec" id="principles">
+        <h2>Trust principles</h2>
+        <ul>
+          <li><strong>Never answer immediately.</strong> Every run investigates first, then reasons, then concludes.</li>
+          <li><strong>Evidence, reasoning, confidence.</strong> Every conclusion carries all three.</li>
+          <li><strong>No fabrication.</strong> No invented statistics, no fake citations, no imaginary comparables.</li>
+          <li><strong>Label the source.</strong> Findings from Mantle Skills are marked as <em>evidence</em>; the agent's inferences are marked as <em>reasoning / recommendations</em>.</li>
+          <li><strong>Explain uncertainty.</strong> Confidence is scored on evidence sufficiency and stated plainly.</li>
+        </ul>
+      </section>
+
+      <section class="doc-sec" id="architecture">
+        <h2>Architecture</h2>
+        <p>Three layers, cleanly separated:</p>
+        <div class="code">frontend/            static UI (this site)
+  index / research / live / report / documentation
+  assets/app.js      UI logic + interview + live progress
+  assets/agent.js    client-side research brain (fallback)
+
+netlify/functions/   backend research service
+  research.js        POST /api/research  (buffered)
+  research-stream.js POST /api/research/stream  (SSE)
+  lib/orchestrator.js  investigation loop
+  lib/skills.js        Mantle Skills adapters
+  lib/engines.js       scoring / evidence / reasoning
+  lib/util.js          normalize + shared helpers</div>
+        <p>The frontend calls the backend first; if the endpoint is unavailable (for example on a static-only deploy) it transparently falls back to the in-browser agent, so a demo never breaks.</p>
+      </section>
+
+      <section class="doc-sec" id="orchestration">
+        <h2>Orchestration loop</h2>
+        <p>The orchestrator runs a disciplined, institutional workflow rather than a single prompt:</p>
+        <ol>
+          <li><strong>Intake &amp; normalize</strong> the brief (canonical + legacy field names).</li>
+          <li><strong>Plan</strong> which skills the question actually requires.</li>
+          <li><strong>Investigate</strong> &mdash; invoke each skill and record findings as evidence (E-001…).</li>
+          <li><strong>Score</strong> readiness, liquidity, reach, ecosystem and risk.</li>
+          <li><strong>Reason</strong> over evidence, surface conflicts and gaps.</li>
+          <li><strong>Measure confidence</strong> from evidence sufficiency.</li>
+          <li><strong>Compile</strong> the Distribution Intelligence Dossier.</li>
+          <li><strong>Log</strong> the full activity trail for replay.</li>
+        </ol>
+        <p>Every stage is emitted as an event, which is what drives the live investigation screen and Research Replay Mode.</p>
+      </section>
+
+      <section class="doc-sec" id="skills">
+        <h2>Mantle Skills</h2>
+        <div class="grid g2">
+          <div class="card"><h3>Data Indexer</h3><p>Finds comparable RWAs and indexes on-chain distribution data.</p></div>
+          <div class="card"><h3>Risk Evaluator</h3><p>Assesses liquidity, concentration and regulatory risk.</p></div>
+          <div class="card"><h3>DeFi Operator</h3><p>Maps venues, liquidity routes and cross-chain pathways.</p></div>
+          <div class="card"><h3>Network Primer</h3><p>Grounds the analysis in Mantle ecosystem context.</p></div>
+        </div>
+        <p style="margin-top:14px">Skills are invoked through <code>lib/skills.js</code>, which can call a live Mantle Skills endpoint (<code>MANTLE_SKILLS_URL</code>) or run deterministic local adapters for offline demos.</p>
+      </section>
+
+      <section class="doc-sec" id="endpoints">
+        <h2>API endpoints</h2>
+        <h3>POST /api/research</h3>
+        <p>Runs a full investigation and returns the complete result in one response.</p>
+        <div class="code">POST /api/research
+Content-Type: application/json
+
+{ "assetName": "Helios Solar Yield Note",
+  "assetType": "Treasury",
+  "assetValue": "$25,000,000",
+  "targetInvestors": "Institution",
+  "targetRegion": "Europe",
+  "launchStage": "Pre-Issuance",
+  "distributionGoal": "broaden holder base" }
+
+=> { ok, session, activityLog, skillRuns, dossier }</div>
+        <h3>POST /api/research/stream</h3>
+        <p>Server-Sent Events stream emitting <code>session</code>, <code>event</code>, <code>plan</code>, <code>skill</code>, <code>error</code> and <code>done</code> messages as the investigation progresses.</p>
+      </section>
+
+      <section class="doc-sec" id="data">
+        <h2>Data model</h2>
+        <p>A run produces a single dossier object. Key fields:</p>
+        <div class="code">dossier = {
+  researchId, status, asset{...}, objective,
+  plan{ skills[], considered },
+  summary{ text }, readiness{...},
+  scores{ readiness, liquidity, reach, eco, riskScore, ... },
+  evidence[ { id, source, finding, importance,
+              confidence, confidencePct, timestamp } ],
+  reasoning[], conflicts[], liquidity{...},
+  opportunities{...}, risks[ {type,severity,...} ],
+  crosschain{...}, strategy[], recommendations,
+  gaps[], confidence{ value, label, explanation, factors },
+  nextActions[], session{...}, activityLog[], skillRuns[]
+}</div>
+      </section>
+
+      <section class="doc-sec" id="dossier-ui">
+        <h2>Distribution Intelligence Dossier</h2>
+        <p><code>report.html</code> presents the run as an institutional intelligence file rather than a chat reply. It is pure HTML/CSS/vanilla JS (no chart libraries) and renders from the live backend dossier or the offline engine identically.</p>
+        <div class="cards">
+          <div class="card"><h3>Hero gauge</h3><p>Animated circular Distribution Readiness meter with green glow, plus verdict, confidence and risk-gate chips.</p></div>
+          <div class="card"><h3>Evidence dashboard</h3><p>Every evidence item as a card: ID, source skill, finding, importance, confidence and timestamp — revealed on scroll.</p></div>
+          <div class="card"><h3>Analysis charts</h3><p>Hand-built readiness breakdown bars, confidence gauge + factors, activity timeline and cross-chain roadmap.</p></div>
+          <div class="card"><h3>Skills Console</h3><p>Expandable cards showing why each Mantle Skill was selected (or not), what it found and how it shaped the recommendation.</p></div>
+          <div class="card"><h3>Research Verdict</h3><p>Full-width banner — Ready / Needs More Research / Not Ready — with summary, reasoning and the next step.</p></div>
+          <div class="card"><h3>What Seeker Would Do</h3><p>A first-person, consultant-style closing that turns the evidence into a memorable strategic recommendation.</p></div>
+          <div class="card"><h3>Export &amp; PDF</h3><p>Export PDF / Print (institutional cover page + page breaks), Download JSON, Share link and Copy summary.</p></div>
+          <div class="card"><h3>Interaction &amp; a11y</h3><p>Hover lift, count-up numbers, animated bars, fade-in reveals; semantic HTML, ARIA labels, keyboard support and responsive layout.</p></div>
+        </div>
+      </section>
+
+      <section class="doc-sec" id="run">
+        <h2>Run &amp; deploy</h2>
+        <div class="code"># local static preview
+python3 -m http.server 8000
+
+# full stack (functions) with Netlify CLI
+netlify dev
+
+# deploy
+netlify deploy --prod</div>
+        <p>Environment variables: <code>AI_API_KEY</code>, <code>MANTLE_SKILLS_URL</code>, plus <code>MANTLE_FORCE_FAIL</code> and <code>MANTLE_SKILL_DELAY_MS</code> for testing failure and latency handling. With none set, the agent runs fully offline using its local engines.</p>
+      </section>
+    </div>
+  </div>
+</main>
+<script src="assets/app.js"></script>
+</body>
+</html>

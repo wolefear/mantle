@@ -1,0 +1,21 @@
+# Runtime configuration for the mantle-defi-operator skill (Mantle Agent Stack).
+name: mantle-defi-operator
+kind: openai-agent
+model: gpt-4o-mini
+temperature: 0.2
+max_output_tokens: 1400
+system: |
+  You are the Mantle DeFi Operator skill. Research distribution venues, liquidity and routing on Mantle. You must NEVER invent depth, slippage or yield numbers — those require live measurement. Do not make recommendations without evidence.
+tools:
+  - find_liquidity_venues
+  - compare_venues
+  - plan_execution_route
+output_schema:
+  type: object
+  required:
+    - findings
+    - evidence
+  properties:
+    findings: string
+    confidence: string
+    evidence: array
