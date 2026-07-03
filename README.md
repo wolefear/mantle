@@ -81,20 +81,6 @@ Every conclusion carries **evidence + reasoning + confidence**. The UI clearly l
 - Netlify Functions for the secure server-side orchestration path (buffered + streaming)
 - Frontend calls the backend first and falls back to the in-browser engine on static hosting, so the demo always works
 
-## Run locally
-
-```bash
-cd mantle-seeker
-python3 -m http.server 8080
-# open http://localhost:8080  (static engine)
-# for the backend endpoints: netlify dev
-```
-
-## Deploy (Netlify)
-
-1. Push this folder to a repo and connect it to Netlify (or drag-and-drop the folder).
-2. Publish directory: `.` · Functions directory: `netlify/functions` (already in `netlify.toml`).
-3. Optional env vars: `AI_API_KEY` enables the assisted narration path; `MANTLE_SKILLS_URL` points the skill adapters at a live Mantle Skills gateway. Without them, the app runs its deterministic investigation engine.
 
 ## Structure
 
